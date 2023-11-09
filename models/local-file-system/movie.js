@@ -1,6 +1,6 @@
 import crypto from 'node:crypto'
 
-import { readJSON } from '../utils.js'
+import { readJSON } from '../../utils.js'
 const movies = readJSON('./movies.json')
 
 export class MovieModel {
@@ -13,7 +13,6 @@ export class MovieModel {
   }
 
   static getById = async ({ id }) => {
-    console.log(id)
     const movie = movies.find(movie => movie.id === id)
     return movie
   }
