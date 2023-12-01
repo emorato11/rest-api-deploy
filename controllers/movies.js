@@ -16,7 +16,10 @@ export class MovieController {
     const { id } = req.params
 
     const movie = await this.movieModel.getById({ id })
-    if (movie) return res.json(movie)
+    if (movie) {
+      if (movie.name === 'CastError') return res.status(400).send({ error: 'id provided is malformed' })
+      return res.json(movie)
+    }
 
     res.status(404).json({ message: 'Movie not found' })
   }
